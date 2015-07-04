@@ -1,30 +1,39 @@
 package com.orange.maiboon;
 
 import org.w3c.dom.Text;
-
 import java.sql.Date;
 
 /**
  * Created by Kevin on 28/6/2015.
  */
 public class Profile {
-    Date date;
+    int id;
+    String date;
     int contact;
-    Date in;
-    Date out;
+    String in;
+    String out;
     int duration;
     int people;
-    String room;
-    int price;
+    int room;
+    /*int price;
     boolean paid;
     boolean accounted;
-    Text remarks;
+    String remarks;*/
 
-    public Date getDate() {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -36,27 +45,27 @@ public class Profile {
         this.contact = contact;
     }
 
-    public int getPrice() {
+    /*public int getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
-    }
+    }*/
 
-    public Date getIn() {
+    public String getIn() {
         return in;
     }
 
-    public void setIn(Date in) {
+    public void setIn(String in) {
         this.in = in;
     }
 
-    public Date getOut() {
+    public String getOut() {
         return out;
     }
 
-    public void setOut(Date out) {
+    public void setOut(String out) {
         this.out = out;
     }
 
@@ -76,15 +85,15 @@ public class Profile {
         this.people = people;
     }
 
-    public String getRoom() {
+    public int getRoom() {
         return room;
     }
 
-    public void setRoom(String room) {
+    public void setRoom(int room) {
         this.room = room;
     }
 
-    public boolean isPaid() {
+    /*public boolean isPaid() {
         return paid;
     }
 
@@ -100,11 +109,11 @@ public class Profile {
         this.accounted = accounted;
     }
 
-    public Text getRemarks() {
+    public String getRemarks() {
         return remarks;
     }
 
-    public void setRemarks(Text remarks) {
+    public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
+    }*/
 }

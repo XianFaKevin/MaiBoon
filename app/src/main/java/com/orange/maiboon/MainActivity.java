@@ -9,11 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
 
     Button btn;
+    Button seedBtn;
+    SQLiteHelper dbHelper = new SQLiteHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,16 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), List.class);
                 startActivity(i);
+            }
+        });
+
+        seedBtn = (Button) findViewById(R.id.seedBtn);
+        seedBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHelper.seed();
+                Toast.makeText(getApplicationContext(), "Database seeded!",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }

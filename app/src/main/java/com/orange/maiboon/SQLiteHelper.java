@@ -70,12 +70,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         String formattedDate = df.format(c.getTime());
         int dur;
         int peo;
-        int rm;
+        String rm;
         for (int i=1; i<6; i++) {
             cont = ran.nextInt(9999999) + 90000000;
             dur = ran.nextInt(9) + 1;
             peo = ran.nextInt(5) + 1;
-            rm = ran.nextInt(5) + 1;
+            rm = "A";
             Profile pf = new Profile();
             pf.setContact(cont);
             pf.setDate(formattedDate);
@@ -120,7 +120,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 profile.setOut(cursor.getString(4));
                 profile.setPeople(cursor.getInt(6));
                 profile.setDuration(cursor.getInt(5));
-                profile.setRoom(cursor.getInt(7));
+                profile.setRoom(cursor.getString(7));
                 list.add(profile);
             } while (cursor.moveToNext());
         }

@@ -6,5 +6,30 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_list">List</string>
     <string name="title_activity_profile_info">ProfileInfo</string>
+    <string name="title_activity_add">AddActivity</string>
+    <string name="duration">住几天</string>
+    <string name="people">人数</string>
+    <string name="room">房号</string>
+
+    <string-array name="numbers">
+        <item>"1"</item>
+        <item>"2"</item>
+        <item>"3"</item>
+        <item>"4"</item>
+        <item>"5"</item>
+        <item>"6"</item>
+        <item>"7"</item>
+        <item>"8"</item>
+        <item>"9"</item>
+    </string-array>
+
+    <string-array name="letters">
+        <item>"A"</item>
+        <item>"B"</item>
+        <item>"C"</item>
+        <item>"D"</item>
+        <item>"E"</item>
+        <item>"F"</item>
+    </string-array>
 
 </resources>

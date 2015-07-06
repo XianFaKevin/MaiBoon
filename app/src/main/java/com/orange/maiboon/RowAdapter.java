@@ -59,7 +59,7 @@ public class RowAdapter extends BaseAdapter {
         holder.date.setText(list.get(position).getDate());
         holder.contact.setText(Integer.toString(list.get(position).getContact()));
         holder.people.setText(Integer.toString(list.get(position).getPeople()));
-        holder.room.setText(Integer.toString(list.get(position).getRoom()));
+        holder.room.setText(list.get(position).getRoom());
         holder.duration.setText(Integer.toString(list.get(position).getDuration()));
         return convertView;
     }

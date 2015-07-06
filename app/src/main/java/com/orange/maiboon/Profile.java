@@ -14,7 +14,7 @@ public class Profile {
     String out;
     int duration;
     int people;
-    int room;
+    String room;
     /*int price;
     boolean paid;
     boolean accounted;
@@ -85,11 +85,11 @@ public class Profile {
         this.people = people;
     }
 
-    public int getRoom() {
+    public String getRoom() {
         return room;
     }
 
-    public void setRoom(int room) {
+    public void setRoom(String room) {
         this.room = room;
     }
 

@@ -10,6 +10,7 @@
     <string name="duration">住几天</string>
     <string name="people">人数</string>
     <string name="room">房号</string>
+    <string name="fee_status">交费</string>
 
     <string-array name="numbers">
         <item>"1"</item>
@@ -30,6 +31,12 @@
         <item>"D"</item>
         <item>"E"</item>
         <item>"F"</item>
+    </string-array>
+
+    <string-array name="fee_status">
+        <item>"没交"</item>
+        <item>"浸交"</item>
+        <item>"以交"</item>
     </string-array>
 
 </resources>

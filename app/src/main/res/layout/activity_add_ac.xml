@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.orange.maiboon.AddAcActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/revLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="收入"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/revLabel"
+        android:id="@+id/revText"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/costLabel"
+        android:layout_below="@+id/revLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="收入"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/revLabel"
+        android:layout_toRightOf="@+id/costLabel"
+        android:id="@+id/costText"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="备注"
+        android:id="@+id/noteLabel"
+        android:layout_below="@+id/costLabel"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:id="@+id/noteText"
+        android:layout_toRightOf="@+id/noteLabel"
+        android:layout_below="@+id/costLabel"
+        android:minLines="4"
+        android:lines="5"
+        android:ems="10"
+        android:gravity="top"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/submitBtn"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

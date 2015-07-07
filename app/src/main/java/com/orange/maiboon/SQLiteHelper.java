@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,12 +29,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COL_PEOPLE = "people";
     public static final String COL_ROOM = "room";
     public static final String COL_PRICE = "price";
-    public static final String COL_PAID = "paid";
     public static final String COL_ACCOUNTED = "accounted";
     public static final String COL_REMARKS = "remarks";
+    public static final String TABLE_AC = "ac";
+    public static final String COL_REV = "revenue";
+    public static final String COL_COST = "cost";
+    public static final String COL_PROFIT = "profit";
 
     // Database creation sql statement
-    private static final String TABLE_CREATE = "create table "
+    private static final String TABLE_CREATE_LOGS = "create table "
             + TABLE_LOGS + "(" + COL_ID
             + " integer primary key autoincrement, " + COL_DATE
             + " date, " + COL_CONTACT + " integer, " + COL_IN + " string, "
@@ -44,13 +46,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + COL_PRICE + " integer, " + COL_ACCOUNTED + " integer, "
             + COL_REMARKS + " string);";
 
+    private static final String TABLE_CREATE_AC = "create table "
+            + TABLE_AC + "(" + COL_ID
+            + " integer primary key autoincrement, " + COL_DATE
+            + " date, " + COL_REMARKS + " string, " + COL_REV
+            + " integer, " + COL_COST + " integer, " + COL_PROFIT
+            + " integer);";
+
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);
+        db.execSQL(TABLE_CREATE_LOGS);
+        db.execSQL(TABLE_CREATE_AC);
     }
 
     @Override
@@ -59,33 +69,19 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_AC);
         onCreate(db);
     }
 
     public void seed() {
         Random ran = new Random();
-        int cont;
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String formattedDate = df.format(c.getTime());
-        int dur;
-        int peo;
-        String rm;
-        for (int i=1; i<6; i++) {
-            cont = ran.nextInt(9999999) + 90000000;
-            dur = ran.nextInt(9) + 1;
-            peo = ran.nextInt(5) + 1;
-            rm = "A";
-            Profile pf = new Profile();
-            pf.setContact(cont);
-            pf.setDate(formattedDate);
-            pf.setIn(formattedDate);
-            pf.setOut(formattedDate);
-            pf.setDuration(dur);
-            pf.setPeople(peo);
-            pf.setRoom(rm);
-            this.add(pf);
-        }
+        String date = df.format(c.getTime());
+        String remarks = "fwbefuiwe";
+        int rev = ran.nextInt(999);
+        int cost = ran.nextInt(999);
+        //addAcLog(date, remarks, rev, cost);
     }
 
     public void add(Profile pf) {
@@ -179,6 +175,57 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             profile.setRemarks(cursor.getString(10));
             return profile;
         } else return null;
+    }
+
+    public void addAcLog(AcProfile ap) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int profit = getBalance();
+        Log.d("balance is: ", String.valueOf(profit));
+        Log.d("rev is: " , String.valueOf(ap.getRev()));
+        Log.d("cost is: " , String.valueOf(ap.getCost()));
+        profit += ap.getRev();
+        profit -= ap.getCost();
+        Log.d("Profit is: ", String.valueOf(profit));
+        ContentValues values = new ContentValues();
+        values.put(COL_DATE, ap.getDate());
+        values.put(COL_REMARKS,ap.getNote());
+        values.put(COL_REV, ap.getRev());
+        values.put(COL_COST, ap.getCost());
+        values.put(COL_PROFIT, profit);
+        db.insert(TABLE_AC, null, values);
+        db.close();
+    }
+
+    public int getBalance() {
+        String SELECT_QUERY = "SELECT * FROM " + TABLE_AC;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        if (cursor.moveToLast()) {
+            return cursor.getInt(5);
+        } else return -1;
+    }
+
+    public ArrayList<AcProfile> listAc() {
+        String SELECT_QUERY = "SELECT * FROM " + TABLE_AC;
+        ArrayList<AcProfile> list = new ArrayList<AcProfile>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        if (cursor.moveToLast()) {
+            do {
+                AcProfile ap = new AcProfile();
+                ap.setId(cursor.getInt(0));
+                ap.setDate(cursor.getString(1));
+                ap.setNote(cursor.getString(2));
+                ap.setRev(cursor.getInt(3));
+                ap.setCost(cursor.getInt(4));
+                ap.setProfit(cursor.getInt(5));
+                list.add(ap);
+            } while(cursor.moveToPrevious());
+        }
+        return list;
     }
 }
 

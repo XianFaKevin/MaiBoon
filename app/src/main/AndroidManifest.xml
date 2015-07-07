@@ -30,6 +30,18 @@
             android:name=".AddActivity"
             android:label="@string/title_activity_add" >
         </activity>
+        <activity
+            android:name=".AcActivity"
+            android:label="@string/title_activity_ac" >
+        </activity>
+        <activity
+            android:name=".RowAdapter2"
+            android:label="@string/title_activity_row_adapter2" >
+        </activity>
+        <activity
+            android:name=".AddAcActivity"
+            android:label="@string/title_activity_add_ac" >
+        </activity>
     </application>
 
 </manifest>

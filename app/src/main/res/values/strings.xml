@@ -23,7 +23,6 @@
         <item>"8"</item>
         <item>"9"</item>
     </string-array>
-
     <string-array name="letters">
         <item>"A"</item>
         <item>"B"</item>
@@ -32,11 +31,14 @@
         <item>"E"</item>
         <item>"F"</item>
     </string-array>
-
     <string-array name="fee_status">
         <item>"没交"</item>
         <item>"浸交"</item>
         <item>"已交"</item>
     </string-array>
+
+    <string name="title_activity_ac">AcActivity</string>
+    <string name="title_activity_row_adapter2">RowAdapter2</string>
+    <string name="title_activity_add_ac">AddAcActivity</string>
 
 </resources>

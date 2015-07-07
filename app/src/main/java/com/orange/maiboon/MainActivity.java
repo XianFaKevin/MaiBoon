@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), LogActivity.class);
+                Intent i = new Intent(getApplicationContext(), AcActivity.class);
                 startActivity(i);
             }
         });
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         addBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddActivity.class);
+                Intent i = new Intent(getApplicationContext(), AddAcActivity.class);
                 startActivity(i);
             }
         });

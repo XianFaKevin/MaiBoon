@@ -1,8 +1,5 @@
 package com.orange.maiboon;
 
-import org.w3c.dom.Text;
-import java.sql.Date;
-
 /**
  * Created by Kevin on 28/6/2015.
  */
@@ -15,10 +12,9 @@ public class Profile {
     int duration;
     int people;
     String room;
-    /*int price;
-    boolean paid;
-    boolean accounted;
-    String remarks;*/
+    double price;
+    int accounted;
+    String remarks;
 
 
     public int getId() {
@@ -45,13 +41,13 @@ public class Profile {
         this.contact = contact;
     }
 
-    /*public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
-    }*/
+    }
 
     public String getIn() {
         return in;
@@ -93,19 +89,11 @@ public class Profile {
         this.room = room;
     }
 
-    /*public boolean isPaid() {
-        return paid;
-    }
-
-    public void setPaid(boolean paid) {
-        this.paid = paid;
-    }
-
-    public boolean isAccounted() {
+    public int getAccounted() {
         return accounted;
     }
 
-    public void setAccounted(boolean accounted) {
+    public void setAccounted(int accounted) {
         this.accounted = accounted;
     }
 
@@ -115,5 +103,5 @@ public class Profile {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }*/
+    }
 }

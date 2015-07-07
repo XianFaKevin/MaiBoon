@@ -41,8 +41,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + " date, " + COL_CONTACT + " integer, " + COL_IN + " string, "
             + COL_OUT + " string, " + COL_DURATION + " integer, "
             + COL_PEOPLE + " integer, " + COL_ROOM + " string, "
-            + COL_PRICE + " integer, " + COL_PAID + " boolean, "
-            + COL_ACCOUNTED + " boolean, " + COL_REMARKS + " string);";
+            + COL_PRICE + " integer, " + COL_ACCOUNTED + " integer, "
+            + COL_REMARKS + " string);";
 
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -99,9 +99,33 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         values.put(COL_PEOPLE, pf.getPeople());
         values.put(COL_DURATION, pf.getDuration());
         values.put(COL_ROOM, pf.getRoom());
+        values.put(COL_PRICE, pf.getPrice());
+        values.put(COL_ACCOUNTED, pf.getAccounted());
+        values.put(COL_REMARKS, pf.getRemarks());
 
         db.insert(TABLE_LOGS, null, values);
         db.close();
+    }
+
+    public boolean check(String inD, String outD, String rm) {
+        String SELECT_QUERY = "Select * FROM " + TABLE_LOGS + " WHERE " + COL_IN + " BETWEEN '" +
+                inD + "' AND '" + outD + "' AND " + COL_OUT + " BETWEEN '" + inD + "' AND '" + outD +
+                "' AND " + COL_ROOM + " = '" + rm + "'";
+
+        //String SELECT_QUERY = "Select * FROM " + TABLE_LOGS + " WHERE " + COL_ROOM + " = '" + rm + "'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        Log.d("checking db for dates", "k");
+        if (cursor.moveToFirst()) {
+            Log.d("Number of logs: ",String.valueOf(cursor.getCount()));
+            return false;
+        }
+        else {
+            Log.d("No logs", "true");
+            return true;
+        }
     }
 
     public ArrayList<Profile> list() {
@@ -111,9 +135,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(SELECT_QUERY, null);
 
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToLast()) {
             do {
                 Profile profile = new Profile();
+                profile.setId(cursor.getInt(0));
                 profile.setContact(cursor.getInt(2));
                 profile.setDate(cursor.getString(1));
                 profile.setIn(cursor.getString(3));
@@ -121,10 +146,39 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 profile.setPeople(cursor.getInt(6));
                 profile.setDuration(cursor.getInt(5));
                 profile.setRoom(cursor.getString(7));
+                profile.setPrice(cursor.getInt(8)/100);
+                profile.setAccounted(cursor.getInt(9));
+                profile.setRemarks(cursor.getString(10));
                 list.add(profile);
-            } while (cursor.moveToNext());
+            } while (cursor.moveToPrevious());
         }
         return list;
+    }
+
+    public Profile get(int id) {
+        String SELECT_QUERY = "SELECT * FROM " + TABLE_LOGS + " WHERE " + COL_ID
+                + " = '" + id + "'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        if (cursor.moveToNext()) {
+            Profile profile = new Profile();
+            profile.setId(cursor.getInt(0));
+            profile.setContact(cursor.getInt(2));
+            profile.setDate(cursor.getString(1));
+            profile.setIn(cursor.getString(3));
+            profile.setOut(cursor.getString(4));
+            profile.setPeople(cursor.getInt(6));
+            profile.setDuration(cursor.getInt(5));
+            profile.setRoom(cursor.getString(7));
+            Log.d("db price: ", String.valueOf(cursor.getInt(8)));
+            profile.setPrice(cursor.getInt(8)/100);
+            Log.d("p price: ", String.valueOf(profile.getPrice()));
+            profile.setAccounted(cursor.getInt(9));
+            profile.setRemarks(cursor.getString(10));
+            return profile;
+        } else return null;
     }
 }
 

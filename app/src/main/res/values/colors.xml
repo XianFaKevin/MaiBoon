@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sample_primary">#4590bd</color>
+    <color name="sample_accent">#88bfcb</color>
+    <color name="red">#ffff0000</color>
+    <color name="t">#aa8866</color>
+    <color name="grey">#928d8d</color>
+    <color name="pink">#f25d5d</color>
+    <color name="green">#4eea78</color>
+    <color name="brown">#c7a849</color>
+</resources>

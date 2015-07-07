@@ -1,10 +1,13 @@
 package com.orange.maiboon;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,11 +45,11 @@ public class RowAdapter extends BaseAdapter {
 			 */
             convertView = l_Inflater.inflate(R.layout.row, null);
             holder = new ViewHolder();
-            holder.date = (TextView) convertView.findViewById(R.id.tv);
-            holder.contact = (TextView) convertView.findViewById(R.id.tv2);
-            holder.people = (TextView) convertView.findViewById(R.id.tv3);
-            holder.room = (TextView) convertView.findViewById(R.id.tv4);
-            holder.duration = (TextView) convertView.findViewById(R.id.tv5);
+            holder.date = (TextView) convertView.findViewById(R.id.dateText);
+            holder.contact = (TextView) convertView.findViewById(R.id.contactText);
+            holder.people = (TextView) convertView.findViewById(R.id.peoText);
+            holder.room = (TextView) convertView.findViewById(R.id.rmText);
+            holder.duration = (TextView) convertView.findViewById(R.id.durText);
 
             convertView.setTag(holder);
         } else {
@@ -61,6 +64,13 @@ public class RowAdapter extends BaseAdapter {
         holder.people.setText(Integer.toString(list.get(position).getPeople()));
         holder.room.setText(list.get(position).getRoom());
         holder.duration.setText(Integer.toString(list.get(position).getDuration()));
+        /*if (list.get(position).getAccounted() == 1) {
+            convertView.setBackgroundColor(Color.RED);
+        } else if (list.get(position).getAccounted() == 2) {
+            convertView.setBackgroundColor(Color.GREEN);
+        } else if (list.get(position).getAccounted() == 3) {
+            convertView.setBackgroundColor(Color.MAGENTA);
+        }*/
         return convertView;
     }
 

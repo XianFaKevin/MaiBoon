@@ -1,52 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" android:background="@color/t"
+    android:id="@+id/rl">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="TV1"
-        android:id="@+id/tv"
+        android:text="dateText"
+        android:id="@+id/dateText"
         android:padding="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="电话："
+        android:id="@+id/contactLabel"
+        android:layout_below="@+id/dateText"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="123456789"
+        android:id="@+id/contactText"
+        android:layout_below="@+id/dateText"
+        android:layout_toRightOf="@+id/contactLabel"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="人数："
+        android:id="@+id/peoLabel"
+        android:layout_below="@+id/contactText"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="TV2"
-        android:id="@+id/tv2"
-        android:layout_below="@+id/tv"
-        android:padding="10dp"/>
+        android:id="@+id/peoText"
+        android:layout_below="@+id/contactText"
+        android:layout_toRightOf="@+id/peoLabel"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="房号："
+        android:id="@+id/rmLabel"
+        android:layout_below="@+id/contactText"
+        android:layout_toRightOf="@+id/peoText"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="TV3"
-        android:id="@+id/tv3"
-        android:layout_below="@+id/tv2"
-        android:padding="10dp"/>
+        android:id="@+id/rmText"
+        android:layout_below="@+id/contactText"
+        android:layout_toRightOf="@+id/rmLabel"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="几天："
+        android:textStyle="bold"
+        android:id="@+id/durLabel"
+        android:layout_toRightOf="@+id/rmText"
+        android:layout_below="@+id/contactText"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="TV4"
-        android:id="@+id/tv4"
-        android:layout_toRightOf="@+id/tv3"
-        android:layout_below="@+id/tv2"
-        android:padding="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="TV5"
-        android:id="@+id/tv5"
-        android:layout_toRightOf="@+id/tv4"
-        android:layout_below="@+id/tv2"
-        android:padding="10dp"/>
+        android:id="@+id/durText"
+        android:layout_toRightOf="@+id/durLabel"
+        android:layout_below="@+id/contactText"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
 </RelativeLayout>

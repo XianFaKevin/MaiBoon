@@ -36,7 +36,7 @@
     <string-array name="fee_status">
         <item>"没交"</item>
         <item>"浸交"</item>
-        <item>"以交"</item>
+        <item>"已交"</item>
     </string-array>
 
 </resources>

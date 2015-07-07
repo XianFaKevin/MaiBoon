@@ -4,11 +4,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:id="@+id/rr">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -20,6 +20,22 @@
                 android:layout_centerHorizontal="true"
                 android:padding="15dp"/>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/errorFrame"
+                android:background="@color/red"
+                android:layout_below="@+id/header" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/errorText"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -27,7 +43,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="电话"
                 android:id="@+id/phoneText"
-                android:layout_below="@+id/header"
+                android:layout_below="@+id/errorFrame"
                 android:layout_alignParentLeft="true"
                 android:padding="10dp"/>
 
@@ -37,7 +53,7 @@
                 android:ems="10"
                 android:id="@+id/editPhoneText"
                 android:layout_toRightOf="@+id/phoneText"
-                android:layout_below="@+id/header"
+                android:layout_below="@+id/errorFrame"
                 android:padding="10dp"/>
 
             <TextView
@@ -196,6 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="新登录"
+                android:id="@+id/addBtn"
                 android:layout_below="@+id/editNoteText"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"/>

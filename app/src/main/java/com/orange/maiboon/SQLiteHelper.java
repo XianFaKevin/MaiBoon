@@ -7,10 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Random;
 
 /**
  * Created by Kevin on 27/6/2015.
@@ -180,28 +177,40 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public void addAcLog(AcProfile ap) {
         SQLiteDatabase db = this.getWritableDatabase();
-        int profit = getBalance();
+        double profit = getBalance();
         profit += ap.getRev();
         profit -= ap.getCost();
+        Log.d("profit: ", String.valueOf(profit));
         ContentValues values = new ContentValues();
         values.put(COL_DATE, ap.getDate());
-        values.put(COL_REMARKS,ap.getNote());
-        values.put(COL_REV, ap.getRev());
-        values.put(COL_COST, ap.getCost());
-        values.put(COL_PROFIT, profit);
+        values.put(COL_REMARKS, ap.getNote());
+
+        Double tempD = new Double(ap.getRev() * 100);
+        int tempI = tempD.intValue();
+        values.put(COL_REV, tempI);
+
+        tempD = new Double(ap.getCost() * 100);
+        tempI = tempD.intValue();
+        values.put(COL_COST, tempI);
+
+        tempD = new Double(profit*100);
+        tempI = tempD.intValue();
+        values.put(COL_PROFIT, tempI);
+
         db.insert(TABLE_AC, null, values);
         db.close();
     }
 
-    public int getBalance() {
+    public double getBalance() {
         String SELECT_QUERY = "SELECT * FROM " + TABLE_AC;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(SELECT_QUERY, null);
 
         if (cursor.moveToLast()) {
-            return cursor.getInt(5);
-        } else return -1;
+            double d = (double)cursor.getInt(5)/100;
+            return d;
+        } else return 0;
     }
 
     public ArrayList<AcProfile> listAc() {
@@ -209,6 +218,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         ArrayList<AcProfile> list = new ArrayList<AcProfile>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+        double d;
 
         if (cursor.moveToLast()) {
             do {
@@ -216,9 +226,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 ap.setId(cursor.getInt(0));
                 ap.setDate(cursor.getString(1));
                 ap.setNote(cursor.getString(2));
-                ap.setRev(cursor.getInt(3));
-                ap.setCost(cursor.getInt(4));
-                ap.setProfit(cursor.getInt(5));
+
+                d = (double) cursor.getInt(3)/100;
+                ap.setRev(d);
+
+                d = (double) cursor.getInt(4)/100;
+                ap.setCost(d);
+
+                d = (double) cursor.getInt(5)/100;
+                Log.d("profit: ", String.valueOf(d));
+                ap.setProfit(d);
                 list.add(ap);
             } while(cursor.moveToPrevious());
         }

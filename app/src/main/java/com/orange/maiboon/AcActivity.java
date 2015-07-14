@@ -23,7 +23,6 @@ public class AcActivity extends Activity {
         RowAdapter2 adapter = new RowAdapter2(AcActivity.this, dbHelper.listAc());
         lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(adapter);
-        Log.d(String.valueOf(dbHelper.listAc().size()), "dbj");
     }
 
 }

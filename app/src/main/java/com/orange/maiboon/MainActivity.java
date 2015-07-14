@@ -106,16 +106,14 @@ public class MainActivity extends Activity {
     }
 
     public void setImage() {
-        int count = new Random().nextInt(9);
+        int count = new Random().nextInt(6);
         if (count == 0) bb.setImage(R.drawable.a1);
         else if (count == 1) bb.setImage(R.drawable.a2);
         else if (count == 2) bb.setImage(R.drawable.a4);
         else if (count == 3) bb.setImage(R.drawable.a5);
-        else if (count == 4)bb.setImage(R.drawable.a6);
-        else if (count == 5)bb.setImage(R.drawable.a7);
-        else if (count == 6) bb.setImage(R.drawable.a8);
-        else if (count == 7)bb.setImage(R.drawable.a10);
-        else if (count == 8)bb.setImage(R.drawable.a12);
+        else if (count == 4) bb.setImage(R.drawable.a8);
+        else if (count == 5) bb.setImage(R.drawable.a11);
+        else bb.setImage(R.drawable.a10);
     }
 
 }

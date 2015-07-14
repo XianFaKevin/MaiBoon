@@ -1,11 +1,7 @@
 package com.orange.maiboon;
 
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -60,9 +56,9 @@ public class RowAdapter2 extends BaseAdapter {
 
         holder.date.setText(list.get(position).getDate());
         holder.note.setText(list.get(position).getNote());
-        holder.rev.setText(Integer.toString(list.get(position).getRev()));
-        holder.cost.setText(Integer.toString(list.get(position).getCost()));
-        holder.profit.setText(Integer.toString(list.get(position).getProfit()));
+        holder.rev.setText(Double.toString(list.get(position).getRev()));
+        holder.cost.setText(Double.toString(list.get(position).getCost()));
+        holder.profit.setText(Double.toString(list.get(position).getProfit()));
         return convertView;
     }
 

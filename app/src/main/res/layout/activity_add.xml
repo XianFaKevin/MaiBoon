@@ -1,11 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="@drawable/green"
-    xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto" android:id="@+id/rr">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:id="@+id/rr">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"

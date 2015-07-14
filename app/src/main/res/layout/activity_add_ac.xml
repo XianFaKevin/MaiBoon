@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.orange.maiboon.AddAcActivity"
     android:background="@drawable/green" xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
-    android:padding="5dp">
+    android:padding="5dp" android:id="@+id/rw">
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,20 +15,43 @@
         android:padding="@dimen/padding_medium"
         android:id="@+id/header"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/errorFrame"
+        android:layout_below="@+id/header"
+        android:background="@color/red2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/textLarge"
+            android:textStyle="bold"
+            android:id="@+id/errorHeader"
+            android:text="输入错误"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium"
+            android:layout_below="@+id/errorHeader"
+            android:id="@+id/errorMsg"/>
+    </RelativeLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/revLabel"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
-        android:layout_below="@+id/header"
+        android:layout_below="@+id/errorFrame"
         android:padding="10dp"
         android:text="收入"/>
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:layout_width="@dimen/textBox"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/revLabel"
-        android:layout_below="@+id/header"
+        android:layout_below="@+id/errorFrame"
         android:id="@+id/revText"/>
 
     <TextView

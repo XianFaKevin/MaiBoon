@@ -70,6 +70,8 @@ public class ProfileInfo extends Activity {
             @Override
             public void onClick(View view) {
                 finish();
+                Intent i = new Intent(getApplicationContext(), LogActivity.class);
+                startActivity(i);
             }
         });
 

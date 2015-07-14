@@ -7,9 +7,9 @@ public class AcProfile {
     int id;
     String date;
     String note;
-    int rev;
-    int cost;
-    int profit;
+    double rev;
+    double cost;
+    double profit;
 
     public int getId() {
         return id;
@@ -35,27 +35,27 @@ public class AcProfile {
         this.note = note;
     }
 
-    public int getRev() {
+    public double getRev() {
         return rev;
     }
 
-    public void setRev(int rev) {
+    public void setRev(double rev) {
         this.rev = rev;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 
-    public int getProfit() {
+    public double getProfit() {
         return profit;
     }
 
-    public void setProfit(int profit) {
+    public void setProfit(double profit) {
         this.profit = profit;
     }
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@color/t"
+    android:layout_height="match_parent" android:background="@drawable/blue"
     android:id="@+id/rl">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textMedium"
+        android:textStyle="bold"
         android:text="dateText"
         android:id="@+id/dateText"
         android:padding="10dp"/>
@@ -15,7 +16,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="电话："
         android:id="@+id/contactLabel"
         android:layout_below="@+id/dateText"
@@ -25,7 +27,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="123456789"
         android:id="@+id/contactText"
         android:layout_below="@+id/dateText"
@@ -37,7 +40,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="人数："
         android:id="@+id/peoLabel"
         android:layout_below="@+id/contactText"
@@ -47,7 +51,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="TV2"
         android:id="@+id/peoText"
         android:layout_below="@+id/contactText"
@@ -59,7 +64,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="房号："
         android:id="@+id/rmLabel"
         android:layout_below="@+id/contactText"
@@ -70,7 +76,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="TV3"
         android:id="@+id/rmText"
         android:layout_below="@+id/contactText"
@@ -82,9 +89,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="几天："
+        android:textSize="@dimen/textSmall"
         android:textStyle="bold"
+        android:text="几天："
         android:id="@+id/durLabel"
         android:layout_toRightOf="@+id/rmText"
         android:layout_below="@+id/contactText"
@@ -94,7 +101,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="bold"
         android:text="TV4"
         android:id="@+id/durText"
         android:layout_toRightOf="@+id/durLabel"
@@ -102,5 +110,25 @@
         android:paddingRight="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/periodText"
+        android:layout_toRightOf="@+id/contactText"
+        android:textStyle="bold"
+        android:layout_below="@+id/dateText"
+        android:textSize="@dimen/textSmall"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/accText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textSize="@dimen/textMedium"
+        android:textStyle="bold"
+        android:padding="15dp"/>
 
 </RelativeLayout>

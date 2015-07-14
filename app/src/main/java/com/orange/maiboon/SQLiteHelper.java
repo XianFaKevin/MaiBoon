@@ -40,7 +40,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String TABLE_CREATE_LOGS = "create table "
             + TABLE_LOGS + "(" + COL_ID
             + " integer primary key autoincrement, " + COL_DATE
-            + " date, " + COL_CONTACT + " integer, " + COL_IN + " string, "
+            + " date, " + COL_CONTACT + " string, " + COL_IN + " string, "
             + COL_OUT + " string, " + COL_DURATION + " integer, "
             + COL_PEOPLE + " integer, " + COL_ROOM + " string, "
             + COL_PRICE + " integer, " + COL_ACCOUNTED + " integer, "
@@ -73,17 +73,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void seed() {
-        Random ran = new Random();
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String date = df.format(c.getTime());
-        String remarks = "fwbefuiwe";
-        int rev = ran.nextInt(999);
-        int cost = ran.nextInt(999);
-        //addAcLog(date, remarks, rev, cost);
-    }
-
     public void add(Profile pf) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -103,6 +92,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void updateAccounted(int id, int acc) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_ACCOUNTED, acc);
+        db.update(TABLE_LOGS, values, COL_ID + " = ?", new String[]{String.valueOf(id)});
+    }
+
     public boolean check(String inD, String outD, String rm) {
         String SELECT_QUERY = "Select * FROM " + TABLE_LOGS + " WHERE " + COL_IN + " BETWEEN '" +
                 inD + "' AND '" + outD + "' AND " + COL_OUT + " BETWEEN '" + inD + "' AND '" + outD +
@@ -116,6 +112,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         Log.d("checking db for dates", "k");
         if (cursor.moveToFirst()) {
             Log.d("Number of logs: ",String.valueOf(cursor.getCount()));
+            Log.d("in date: ", inD);
+            Log.d("out date: ", outD);
             return false;
         }
         else {
@@ -124,9 +122,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<Profile> list() {
+    public ArrayList<Profile> list(String curDate) {
         ArrayList<Profile> list = new ArrayList<Profile>();
-        String SELECT_QUERY = "Select * FROM " + TABLE_LOGS;
+        String SELECT_QUERY = "";
+        if (curDate != "") SELECT_QUERY = "Select * FROM " + TABLE_LOGS + " WHERE "
+                + COL_OUT + " >= '" + curDate + "'";
+        else SELECT_QUERY = "Select * FROM " + TABLE_LOGS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(SELECT_QUERY, null);
@@ -135,14 +136,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             do {
                 Profile profile = new Profile();
                 profile.setId(cursor.getInt(0));
-                profile.setContact(cursor.getInt(2));
+                profile.setContact(cursor.getString(2));
                 profile.setDate(cursor.getString(1));
                 profile.setIn(cursor.getString(3));
                 profile.setOut(cursor.getString(4));
                 profile.setPeople(cursor.getInt(6));
                 profile.setDuration(cursor.getInt(5));
                 profile.setRoom(cursor.getString(7));
-                profile.setPrice(cursor.getInt(8)/100);
+                profile.setPrice(cursor.getInt(8) / 100);
                 profile.setAccounted(cursor.getInt(9));
                 profile.setRemarks(cursor.getString(10));
                 list.add(profile);
@@ -161,7 +162,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         if (cursor.moveToNext()) {
             Profile profile = new Profile();
             profile.setId(cursor.getInt(0));
-            profile.setContact(cursor.getInt(2));
+            profile.setContact(cursor.getString(2));
             profile.setDate(cursor.getString(1));
             profile.setIn(cursor.getString(3));
             profile.setOut(cursor.getString(4));
@@ -180,12 +181,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void addAcLog(AcProfile ap) {
         SQLiteDatabase db = this.getWritableDatabase();
         int profit = getBalance();
-        Log.d("balance is: ", String.valueOf(profit));
-        Log.d("rev is: " , String.valueOf(ap.getRev()));
-        Log.d("cost is: " , String.valueOf(ap.getCost()));
         profit += ap.getRev();
         profit -= ap.getCost();
-        Log.d("Profit is: ", String.valueOf(profit));
         ContentValues values = new ContentValues();
         values.put(COL_DATE, ap.getDate());
         values.put(COL_REMARKS,ap.getNote());
@@ -226,6 +223,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             } while(cursor.moveToPrevious());
         }
         return list;
+    }
+
+    public void reset() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_LOGS, null, null);
+        db.delete(TABLE_AC, null, null);
     }
 }
 

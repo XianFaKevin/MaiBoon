@@ -9,8 +9,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Kevin on 27/6/2015.
@@ -50,6 +53,8 @@ public class RowAdapter extends BaseAdapter {
             holder.people = (TextView) convertView.findViewById(R.id.peoText);
             holder.room = (TextView) convertView.findViewById(R.id.rmText);
             holder.duration = (TextView) convertView.findViewById(R.id.durText);
+            holder.period = (TextView) convertView.findViewById(R.id.periodText);
+            holder.acc = (TextView) convertView.findViewById(R.id.accText);
 
             convertView.setTag(holder);
         } else {
@@ -60,10 +65,23 @@ public class RowAdapter extends BaseAdapter {
         }
 
         holder.date.setText(list.get(position).getDate());
-        holder.contact.setText(Integer.toString(list.get(position).getContact()));
+        holder.contact.setText(list.get(position).getContact());
         holder.people.setText(Integer.toString(list.get(position).getPeople()));
         holder.room.setText(list.get(position).getRoom());
         holder.duration.setText(Integer.toString(list.get(position).getDuration()));
+        String in = simpleDateConverter(list.get(position).getIn());
+        String out = simpleDateConverter(list.get(position).getOut());
+        holder.period.setText( in + " 到 " + out);
+        if (list.get(position).getAccounted() == 1) {
+            holder.acc.setText("没交");
+            holder.acc.setTextColor(Color.parseColor("#ff0000"));
+        } else if (list.get(position).getAccounted() == 2) {
+            holder.acc.setText("浸交");
+            holder.acc.setTextColor(Color.parseColor("#cdcd00"));
+        } else {
+            holder.acc.setText("已交");
+            holder.acc.setTextColor(Color.parseColor("#00cd00"));
+        }
         /*if (list.get(position).getAccounted() == 1) {
             convertView.setBackgroundColor(Color.RED);
         } else if (list.get(position).getAccounted() == 2) {
@@ -80,5 +98,18 @@ public class RowAdapter extends BaseAdapter {
         TextView people;
         TextView room;
         TextView duration;
+        TextView period;
+        TextView acc;
+    }
+
+    public String simpleDateConverter(String input) {
+        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        Date date = new Date();
+        try {
+            date = originalFormat.parse(input);
+        } catch (Exception e) {}
+        String output = newFormat.format(date);
+        return output;
     }
 }

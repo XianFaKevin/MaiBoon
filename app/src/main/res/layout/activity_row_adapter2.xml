@@ -3,83 +3,88 @@
     android:layout_height="match_parent" tools:context="com.orange.maiboon.RowAdapter2">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_width="@dimen/logWidthSmall"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/azure3">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/date"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSmall"
+            android:textStyle="bold"
             android:layout_centerInParent="true"
-            android:paddingLeft="@dimen/acRowPadding"
-            android:paddingRight="@dimen/acRowPadding"/>
+            android:paddingLeft="@dimen/acRowHgtPadding"
+            android:paddingRight="@dimen/acRowHgtPadding"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_width="@dimen/logWidth"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/azure4">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/note"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-
+            android:textSize="@dimen/textSmall"
+            android:textStyle="bold"
             android:layout_centerInParent="true"
-            android:paddingLeft="@dimen/acRowPadding"
-            android:paddingRight="@dimen/acRowPadding"/>
+            android:paddingLeft="@dimen/acRowHgtPadding"
+            android:paddingRight="@dimen/acRowHgtPadding"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_width="@dimen/logWidthSmall"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/azure3">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/rev"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSmall"
+            android:textStyle="bold"
             android:layout_centerInParent="true"
-            android:paddingLeft="@dimen/acRowPadding"
-            android:paddingRight="@dimen/acRowPadding"/>
+            android:paddingLeft="@dimen/acRowHgtPadding"
+            android:paddingRight="@dimen/acRowHgtPadding"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_width="@dimen/logWidthSmall"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/azure4">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/cost"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-
+            android:textSize="@dimen/textSmall"
+            android:textStyle="bold"
             android:layout_centerInParent="true"
-            android:paddingLeft="@dimen/acRowPadding"
-            android:paddingRight="@dimen/acRowPadding"/>
+            android:paddingLeft="@dimen/acRowHgtPadding"
+            android:paddingRight="@dimen/acRowHgtPadding"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_width="@dimen/logWidthSmall"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/azure3">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/profit"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium"
-
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSmall"
+            android:textStyle="bold"
             android:layout_centerInParent="true"
-            android:paddingLeft="@dimen/acRowPadding"
-            android:paddingRight="@dimen/acRowPadding"/>
+            android:paddingLeft="@dimen/acRowHgtPadding"
+            android:paddingRight="@dimen/acRowHgtPadding"/>
     </RelativeLayout>
 
 </LinearLayout>

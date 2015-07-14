@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" android:background="@drawable/green"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,25 +14,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/textHeader"
+                android:textStyle="bold"
                 android:text="加新住单"
                 android:id="@+id/header"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:padding="15dp"/>
+                android:padding="@dimen/padding_large"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/errorFrame"
-                android:background="@color/red"
-                android:layout_below="@+id/header" >
+                android:background="@color/red2"
+                android:layout_below="@+id/header">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/errorText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="@dimen/textMedium"
+                    android:textStyle="bold"
+                    android:padding="@dimen/padding_small"
                     android:visibility="gone"/>
 
             </RelativeLayout>
@@ -40,32 +44,33 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="电话"
                 android:id="@+id/phoneText"
                 android:layout_below="@+id/errorFrame"
                 android:layout_alignParentLeft="true"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
-            <EditText
-                android:layout_width="wrap_content"
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:layout_width="@dimen/textBox"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:id="@+id/editPhoneText"
                 android:layout_toRightOf="@+id/phoneText"
                 android:layout_below="@+id/errorFrame"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="住期"
                 android:id="@+id/dateText"
                 android:layout_below="@+id/phoneText"
-                android:padding="10dp" />
+                android:padding="@dimen/padding_small"/>
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="选进日期"
@@ -73,35 +78,40 @@
                 android:onClick="showInDatePickerDialog"
                 android:layout_below="@+id/phoneText"
                 android:layout_toRightOf="@+id/dateText"
-                android:padding="10dp" />
+                bootstrap:bb_type="info"
+                android:padding="@dimen/padding_small" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="到"
+                android:paddingBottom="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_small"
                 android:id="@+id/inDate"
                 android:layout_below="@+id/phoneText"
-                android:layout_toRightOf="@+id/pickInDate"
-                android:padding="10dp" />
+                android:layout_toRightOf="@+id/pickInDate"/>
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="选出日期"
                 android:id="@+id/pickOutDate"
                 android:layout_below="@+id/phoneText"
                 android:layout_toRightOf="@+id/inDate"
-                android:padding="10dp" />
+                bootstrap:bb_type="info"
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="住日"
                 android:id="@+id/durText"
                 android:layout_below="@+id/pickOutDate"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <Spinner
                 android:id="@+id/durationSpn"
@@ -111,16 +121,18 @@
                 android:prompt="@string/duration"
                 android:layout_below="@+id/pickOutDate"
                 android:layout_toRightOf="@+id/durText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"
+                android:background="@android:drawable/btn_dropdown"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="人数"
                 android:id="@+id/peoText"
                 android:layout_below="@+id/durText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <Spinner
                 android:id="@+id/peopleSpn"
@@ -130,16 +142,18 @@
                 android:prompt="@string/people"
                 android:layout_below="@+id/durationSpn"
                 android:layout_toRightOf="@+id/peoText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"
+                android:background="@android:drawable/btn_dropdown"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="房号"
                 android:id="@+id/rmText"
                 android:layout_below="@+id/peoText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <Spinner
                 android:id="@+id/roomSpn"
@@ -149,34 +163,36 @@
                 android:prompt="@string/room"
                 android:layout_below="@+id/peopleSpn"
                 android:layout_toRightOf="@+id/rmText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"
+                android:background="@android:drawable/btn_dropdown"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="价钱"
                 android:id="@+id/priceText"
                 android:layout_below="@+id/roomSpn"
-                android:padding="10dp" />
+                android:padding="@dimen/padding_small" />
 
-            <EditText
-                android:layout_width="wrap_content"
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:layout_width="@dimen/textBox"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:id="@+id/editPriceText"
                 android:layout_toRightOf="@+id/priceText"
                 android:layout_below="@+id/roomSpn"
-                android:padding="10dp" />
+                android:padding="@dimen/padding_small" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="交费"
                 android:id="@+id/feeText"
                 android:layout_below="@+id/priceText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <Spinner
                 android:id="@+id/feeSpn"
@@ -186,36 +202,40 @@
                 android:prompt="@string/fee_status"
                 android:layout_below="@+id/priceText"
                 android:layout_toRightOf="@+id/feeText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"
+                android:background="@android:drawable/btn_dropdown"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="@dimen/textMedium"
+                android:textStyle="bold"
                 android:text="注明"
                 android:id="@+id/noteText"
                 android:layout_below="@+id/feeText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
-            <EditText
+            <com.beardedhen.androidbootstrap.BootstrapEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:minLines="4"
                 android:lines="5"
-                android:ems="10"
                 android:id="@+id/editNoteText"
                 android:gravity="top"
-                android:layout_below="@+id/noteText" />
+                android:layout_below="@+id/noteText"
+                android:padding="@dimen/padding_medium"/>
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="新登录"
                 android:id="@+id/addBtn"
                 android:layout_below="@+id/editNoteText"
                 android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                bootstrap:bb_type="primary"
+                android:padding="@dimen/padding_large"/>
 
         </RelativeLayout>
 

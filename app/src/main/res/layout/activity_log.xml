@@ -1,33 +1,67 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.orange.maiboon.LogActivity">
+    android:layout_height="match_parent" tools:context="com.orange.maiboon.LogActivity"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/navBar"
-        android:background="@color/grey"
+        android:background="@color/blue1"
         android:padding="5dp">
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/backBtn"
-            android:text="back"/>
+            android:text="返回"
+            bootstrap:bb_icon_left="fa-arrow-left"
+            bootstrap:bb_type="primary"/>
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/addBtn"
-            android:text="Add"
+            android:text="加新"
+            bootstrap:bb_type="primary"
+            bootstrap:bb_icon_right="fa-plus"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabBar"
+        android:layout_below="@+id/navBar">
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="近三月"
+            android:id="@+id/month"
+            android:layout_weight="1"
+            android:enabled="false"
+            bootstrap:bb_type="primary"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="近一年"
+            android:id="@+id/year"
+            android:layout_weight="1"
+            bootstrap:bb_type="primary"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="历来"
+            android:id="@+id/all"
+            android:layout_weight="1"
+            bootstrap:bb_type="primary"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/navBar">
+        android:layout_below="@+id/tabBar">
 
         <ListView
             android:layout_width="wrap_content"

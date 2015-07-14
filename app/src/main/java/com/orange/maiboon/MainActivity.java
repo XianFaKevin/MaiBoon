@@ -8,12 +8,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 
 public class MainActivity extends Activity {
 
-    Button btn;
-    Button seedBtn;
-    Button addBtn;
+    BootstrapButton acBtn;
+    Button seedBtn, settingsBtn;
+    BootstrapButton addAcBtn;
+    BootstrapButton logBtn;
+    BootstrapButton addLogBtn;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
 
     @Override
@@ -21,33 +25,49 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = (Button) findViewById(R.id.button);
-        btn.setOnClickListener(new OnClickListener() {
+        acBtn = (BootstrapButton) findViewById(R.id.acBtn);
+        acBtn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), AcActivity.class);
                 startActivity(i);
             }
         });
 
-        seedBtn = (Button) findViewById(R.id.seedBtn);
-        seedBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dbHelper.seed();
-                Toast.makeText(getApplicationContext(), "Database seeded!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        addBtn = (Button) findViewById(R.id.addBtn);
-        addBtn.setOnClickListener(new OnClickListener() {
+        addAcBtn = (BootstrapButton) findViewById(R.id.addAcBtn);
+        addAcBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), AddAcActivity.class);
                 startActivity(i);
             }
         });
-    }
 
+        logBtn = (BootstrapButton) findViewById(R.id.logBtn);
+        logBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), LogActivity.class);
+                startActivity(i);
+            }
+        });
+
+        addLogBtn = (BootstrapButton) findViewById(R.id.addLogBtn);
+        addLogBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), AddActivity.class);
+                startActivity(i);
+            }
+        });
+
+        settingsBtn = (Button) findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbHelper.reset();
+                Toast.makeText(getApplicationContext(), "Reset!", Toast.LENGTH_LONG);
+            }
+        });
+    }
 
 }

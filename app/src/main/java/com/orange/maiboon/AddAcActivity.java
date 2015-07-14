@@ -9,16 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
 public class AddAcActivity extends Activity {
 
-    TextView note;
-    TextView rev;
-    TextView cost;
-    Button btn;
+    BootstrapEditText note, rev, cost;
+    BootstrapButton btn;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
 
     @Override
@@ -26,10 +27,10 @@ public class AddAcActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ac);
 
-        note = (TextView) findViewById(R.id.noteText);
-        rev = (TextView) findViewById(R.id.revText);
-        cost = (TextView) findViewById(R.id.costText);
-        btn = (Button) findViewById(R.id.submitBtn);
+        note = (BootstrapEditText) findViewById(R.id.noteText);
+        rev = (BootstrapEditText) findViewById(R.id.revText);
+        cost = (BootstrapEditText) findViewById(R.id.costText);
+        btn = (BootstrapButton) findViewById(R.id.submitBtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

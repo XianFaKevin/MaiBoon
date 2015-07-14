@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" android:background="@drawable/green"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,9 +16,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
                 android:id="@+id/creationText"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold"
-                android:padding="10dp"
+                android:padding="@dimen/padding_medium"
                 android:layout_alignParentRight="true"/>
 
 
@@ -29,7 +30,7 @@
                 android:text="电话："
                 android:id="@+id/phoneLabel"
                 android:layout_below="@+id/creationText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/phoneLabel"
                 android:layout_below="@+id/creationText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
                 android:text="住"
                 android:id="@+id/inLabel"
                 android:layout_below="@+id/phoneLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/inLabel"
                 android:layout_below="@+id/phoneLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +68,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/phoneLabel"
                 android:layout_toRightOf="@+id/inText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/outLabel"
                 android:layout_below="@+id/phoneLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +86,7 @@
                 android:id="@+id/durLabel"
                 android:textStyle="bold"
                 android:layout_below="@+id/inLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,7 +94,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/durLabel"
                 android:layout_below="@+id/inLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +105,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/inLabel"
                 android:layout_toRightOf="@+id/durText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,7 +113,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/peoLabel"
                 android:layout_below="@+id/inLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,7 +124,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/inLabel"
                 android:layout_toRightOf="@+id/peoText"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,7 +132,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/rmLabel"
                 android:layout_below="@+id/inLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,7 +142,7 @@
                 android:id="@+id/priceLabel"
                 android:textStyle="bold"
                 android:layout_below="@+id/durLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,7 +150,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_toRightOf="@+id/priceLabel"
                 android:layout_below="@+id/durLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,7 +161,7 @@
                 android:layout_toRightOf="@+id/priceText"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_below="@+id/durLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <Spinner
                 android:id="@+id/feeSpn"
                 android:layout_width="wrap_content"
@@ -169,7 +170,18 @@
                 android:prompt="@string/fee_status"
                 android:layout_below="@+id/durLabel"
                 android:layout_toRightOf="@+id/feeLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"
+                android:background="@android:drawable/btn_dropdown"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/feeText"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/feeLabel"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/durLabel"
+                android:visibility="gone"
+                android:padding="@dimen/padding_small"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -179,7 +191,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
                 android:layout_below="@+id/priceLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -187,7 +199,34 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_below="@+id/priceLabel"
                 android:layout_toRightOf="@+id/noteLabel"
-                android:padding="10dp"/>
+                android:padding="@dimen/padding_small"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/backBtn"
+                android:layout_below="@+id/noteText"
+                android:layout_toLeftOf="@+id/dummyView"
+                android:text="返回"
+                bootstrap:bb_type="primary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dummyView"
+                android:text="qqqqq"
+                android:layout_below="@+id/noteText"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/changeBtn"
+                android:layout_below="@+id/noteText"
+                android:layout_toRightOf="@+id/dummyView"
+                android:text="更新"
+                bootstrap:bb_type="primary"
+                android:enabled="false"/>
 
         </RelativeLayout>
 

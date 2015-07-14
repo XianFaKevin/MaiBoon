@@ -1,45 +1,40 @@
 package com.orange.maiboon;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.ParseException;
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.EmptyStackException;
+import java.util.Locale;
 
 
 public class AddActivity extends FragmentActivity {
 
-    Button pickInDate, pickOutDate, addBtn;
+    BootstrapButton pickInDate, pickOutDate, addBtn;
     Spinner durationSpn, peopleSpn, roomSpn, accSpn;
     Boolean choosingIn;
     Calendar inCal, outCal;
     Profile profile;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
-    EditText phone, price, note;
+    BootstrapEditText phone, price, note;
     String formattedInDate, formattedOutDate;
     String toRm = "";
 
@@ -47,14 +42,15 @@ public class AddActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        setupUI(findViewById(R.id.rr));
 
         profile = new Profile();
 
-        phone = (EditText) findViewById(R.id.editPhoneText);
-        price = (EditText) findViewById(R.id.editPriceText);
-        note = (EditText) findViewById(R.id.editNoteText);
+        phone = (BootstrapEditText) findViewById(R.id.editPhoneText);
+        price = (BootstrapEditText) findViewById(R.id.editPriceText);
+        note = (BootstrapEditText) findViewById(R.id.editNoteText);
 
-        pickInDate = (Button) findViewById(R.id.pickInDate);
+        pickInDate = (BootstrapButton) findViewById(R.id.pickInDate);
         pickInDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +58,7 @@ public class AddActivity extends FragmentActivity {
                 showDatePickerDialog(view);
             }
         });
-        pickOutDate = (Button) findViewById(R.id.pickOutDate);
+        pickOutDate = (BootstrapButton) findViewById(R.id.pickOutDate);
         pickOutDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,14 +99,17 @@ public class AddActivity extends FragmentActivity {
     }
 
     public void showDate(Calendar c) {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         if (choosingIn) {
-            formattedInDate = df.format(c.getTime());
-            pickInDate.setText(formattedInDate);
+            formattedInDate = df2.format(c.getTime());
+            String fInDate = df.format(c.getTime());
+            pickInDate.setText(fInDate);
         }
         else {
-            formattedOutDate = df.format(c.getTime());
-            pickOutDate.setText(formattedOutDate);
+            formattedOutDate = df2.format(c.getTime());
+            String fOutDate = df.format(c.getTime());
+            pickOutDate.setText(fOutDate);
         }
     }
 
@@ -118,13 +117,15 @@ public class AddActivity extends FragmentActivity {
         toRm = String.valueOf(roomSpn.getSelectedItem());
         String errorMsgs = "";
         boolean gotErrors = false;
-        int toPhone=0, toDur=0, toPeo=0, toAcc=0;
+        int toDur=0, toPeo=0, toAcc=0;
         Double toPrice=0.0;
         String nl = System.getProperty("line.separator");
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String toPhone;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         TextView errorText = (TextView) findViewById(R.id.errorText);
 
+        toPhone = phone.getText().toString();
         toDur = Integer.parseInt(String.valueOf(durationSpn.getSelectedItem()));
         toPeo = Integer.parseInt(String.valueOf(peopleSpn.getSelectedItem()));
         if (String.valueOf(accSpn.getSelectedItem()).equals("没交")) toAcc = 1;
@@ -132,12 +133,12 @@ public class AddActivity extends FragmentActivity {
         else if (String.valueOf(accSpn.getSelectedItem()).equals("已交")) toAcc = 3;
 
         // catch phone number error
-        try {
+        /*try {
             toPhone = Integer.parseInt(phone.getText().toString());
         } catch (NumberFormatException nfe) {
             gotErrors = true;
             errorMsgs += "电话号码只能有数字" + nl;
-        }
+        }*/
 
         // catch dates not set & date format error
         try {
@@ -171,7 +172,6 @@ public class AddActivity extends FragmentActivity {
         if (gotErrors) {
             errorText.setText(errorMsgs);
             errorText.setVisibility(View.VISIBLE);
-            Log.d("price as: ", String.valueOf(toPrice.intValue()));
         } else {
             profile.setContact(toPhone);
             profile.setDuration(toDur);
@@ -184,7 +184,6 @@ public class AddActivity extends FragmentActivity {
             profile.setDate(now);
             profile.setRemarks(note.getText().toString());
             profile.setPrice(toPrice.intValue());
-            Log.d("Acc: ", Integer.toString(toAcc));
             profile.setAccounted(toAcc);
             dbHelper.add(profile);
         }
@@ -196,7 +195,7 @@ public class AddActivity extends FragmentActivity {
         durationSpn = (Spinner) findViewById(R.id.durationSpn);
         peopleSpn = (Spinner) findViewById(R.id.peopleSpn);
         accSpn = (Spinner) findViewById(R.id.feeSpn);
-        addBtn = (Button) findViewById(R.id.addBtn);
+        addBtn = (BootstrapButton) findViewById(R.id.addBtn);
 
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -209,5 +208,37 @@ public class AddActivity extends FragmentActivity {
                 }
             }
         });
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public void setupUI(View view) {
+
+        //Set up touch listener for non-text box views to hide keyboard.
+        if(!(view instanceof EditText)) {
+
+            view.setOnTouchListener(new View.OnTouchListener() {
+
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(AddActivity.this);
+                    return false;
+                }
+
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                View innerView = ((ViewGroup) view).getChildAt(i);
+
+                setupUI(innerView);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ package com.orange.maiboon;
 public class Profile {
     int id;
     String date;
-    int contact;
+    String contact;
     String in;
     String out;
     int duration;
@@ -33,11 +33,11 @@ public class Profile {
         this.date = date;
     }
 
-    public int getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(int contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 

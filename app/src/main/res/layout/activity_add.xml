@@ -25,19 +25,24 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:id="@+id/errorFrame"
-                android:background="@color/red2"
-                android:layout_below="@+id/header">
-
+                android:layout_below="@+id/header"
+                android:background="@color/red2">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/errorText"
-                    android:textSize="@dimen/textMedium"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/textLarge"
                     android:textStyle="bold"
-                    android:padding="@dimen/padding_small"
-                    android:visibility="gone"/>
-
+                    android:id="@+id/errorHeader"
+                    android:text="输入错误"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textMedium"
+                    android:layout_below="@+id/errorHeader"
+                    android:id="@+id/errorMsg"/>
             </RelativeLayout>
 
 

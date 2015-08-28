@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
     BootstrapButton addAcBtn;
     BootstrapButton logBtn;
     BootstrapButton addLogBtn;
-    BootstrapCircleThumbnail bb;
+    //BootstrapCircleThumbnail bb;
     SQLiteHelper dbHelper = new SQLiteHelper(this);
 
     @Override
@@ -74,8 +74,8 @@ public class MainActivity extends Activity {
             }
         });
 
-        bb = (BootstrapCircleThumbnail) findViewById(R.id.bb);
-        setImage();
+        //bb = (BootstrapCircleThumbnail) findViewById(R.id.bb);
+        //setImage();
     }
 
     public void settingsDialog(final Activity context) {
@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
         alertDialog.show();
     }
 
-    public void setImage() {
+    /*public void setImage() {
         int count = new Random().nextInt(6);
         if (count == 0) bb.setImage(R.drawable.a1);
         else if (count == 1) bb.setImage(R.drawable.a2);
@@ -114,6 +114,6 @@ public class MainActivity extends Activity {
         else if (count == 4) bb.setImage(R.drawable.a8);
         else if (count == 5) bb.setImage(R.drawable.a11);
         else bb.setImage(R.drawable.a10);
-    }
+    }*/
 
 }
